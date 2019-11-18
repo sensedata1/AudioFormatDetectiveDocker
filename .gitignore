@@ -3,3 +3,4 @@ LAC
 testfft.py
 venv/
 build/
+.idea*
