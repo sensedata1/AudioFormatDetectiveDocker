@@ -3,4 +3,6 @@ LAC
 testfft.py
 venv/
 build/
-.idea*
+.idea/
+__pycache__
+dist/
