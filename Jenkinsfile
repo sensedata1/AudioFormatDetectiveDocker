@@ -2,7 +2,7 @@
 
 
 
-node('node') {
+node('jenkins-maven') {
 
 
     currentBuild.result = "SUCCESS"
