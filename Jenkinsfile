@@ -18,6 +18,13 @@ pipeline {
         }
       }
     }
+//     stage('Extract Pyinstaller --Onefile Binary') {
+//       steps{
+//         script {
+//           sh docker
+//         }
+//       }
+//     }
     stage('Deploy Image') {
       steps{
         script {

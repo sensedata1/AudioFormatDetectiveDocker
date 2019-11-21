@@ -4,7 +4,7 @@
 # certifi==2018.11.29
 # colors.py==0.2.2
 # colours==0.3
-eyeD3==0.8
+eyed3==0.8
 ez-setup==0.9
 # future==0.17.1
 # gcc7==0.0.6
