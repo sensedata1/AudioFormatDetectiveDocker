@@ -17,5 +17,5 @@ RUN apt-get -y install ffmpeg
 RUN chmod a+x docker-build-script.sh && ./docker-build-script.sh
 #RUN pyinstaller --onefile AudioFormatDetecxtiveCON.py
 RUN mkdir /AJTEMP
-RUN cd /dist
+RUN cd /app/dist
 CMD AudioFormatDetectiveCON
