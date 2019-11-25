@@ -24,10 +24,10 @@ pyinstaller \
 
 rm -rf /venv
 rm -rf __pycache__
-rm -rf /build
-rm AudioFormatDetectiveCON.spec
+#rm -rf /build
+#rm AudioFormatDetectiveCON.spec
 rm -rf /Test
 #rm requirements.txt
-rm help.spec
+#rm help.spec
 
 echo "Done!"
