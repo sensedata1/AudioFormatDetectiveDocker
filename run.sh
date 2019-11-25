@@ -1,1 +1,2 @@
-docker run -v ~/AJTEMP:/AJTEMP -it   sensedata1/audio-format-detective:latest
+docker run -v ~/AJTEMP:/AJTEMP -it   sensedata1/audioformatdetective:2
+
