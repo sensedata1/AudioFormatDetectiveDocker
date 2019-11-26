@@ -14,9 +14,8 @@ ffmpeg \
 RUN chmod a+x docker-build-script.sh \
 && ./docker-build-script.sh \
 && mkdir /AJTEMP \
-&& chmod a+x /app/dist/AudioFormatDetectiveCON \
-&& AUTO_ADDED_PACKAGES=`apt-mark showauto` \
-&& apt-get remove --purge -y $BUILD_PACKAGES $AUTO_ADDED_PACKAGES
+&& chmod a+x /app/dist/AudioFormatDetectiveCON
+
 
 WORKDIR /app/dist
 ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
