@@ -8,14 +8,13 @@ python-pyaudio \
 python3-pyaudio \
 make \
 python-setuptools \
-ffmpeg \
-&& rm -rf /var/lib/apt/lists/*
+ffmpeg && \
+rm -rf /var/lib/apt/lists/*
 
 RUN chmod a+x docker-build-script.sh \
 && ./docker-build-script.sh \
 && mkdir /AJTEMP \
 && chmod a+x /app/dist/AudioFormatDetectiveCON
-
 
 WORKDIR /app/dist
 ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
