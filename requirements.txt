@@ -1,31 +1,7 @@
-# altgraph==0.16.1
-# argh==0.26.2
-# audiotools==3.1.1
-# certifi==2018.11.29
-# colors.py==0.2.2
-# colours==0.3
-eyed3==0.8
+
 ez-setup==0.9
-# future==0.17.1
-# gcc7==0.0.6
-# libmagic==1.0
-# macholib==1.11
-# modulegraph==0.17
 numpy==1.16.0
-# pathlib==1.0.1
-# pathtools==0.1.2
-# pefile==2018.8.8
-# pipenv==2018.11.26
-# py2app==0.18
-# pycparser==2.19
 pydub==0.23.1
-# pydub-ffmpeg-wav==0.23.0
 PyInstaller==3.4
-# python-magic==0.4.15
-# PyYAML==3.13
-# scipy==1.2.0
-# six==1.12.0
 SpeechRecognition==3.8.1
-# virtualenv==16.2.0
-# virtualenv-clone==0.4.0
-# watchdog==0.9.0
+
