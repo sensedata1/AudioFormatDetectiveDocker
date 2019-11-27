@@ -3,6 +3,7 @@ pipeline {
     registry = "sensedata1/audioformatdetective"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    runCommand = "docker run -v ~/AJTEMP:/AJTEMP -it   sensedata1/audioformatdetective"
   }
   agent any
   stages {
@@ -31,6 +32,12 @@ pipeline {
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
+
+      }
+    }
+    stage('Increment build number in run.sh') {
+      steps{
+        sh "cat $runCommand:$BUILD_NUMBER >> run.sh"
 
       }
     }
