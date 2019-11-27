@@ -38,10 +38,9 @@ pipeline {
     }
     stage('Increment build number in run.sh') {
       steps{
-        script{
-            printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"
-            ./run.sh
-        }
+         sh 'printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"'
+         sh './run.sh'
+
       }
     }
   }
