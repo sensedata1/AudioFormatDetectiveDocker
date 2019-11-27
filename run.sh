@@ -1,2 +1,4 @@
-docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective:19
-docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective
+#!/bin/bash
+
+cd /Users/blord/work/jenkins_home/workspace/udioformatdetectivedocker_master
+./run.sh
