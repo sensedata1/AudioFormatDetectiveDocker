@@ -3,8 +3,8 @@ pipeline {
     registry = "sensedata1/audioformatdetective"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    runCommand= "docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective"
-    destFile=run.sh
+    runCommand = "docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective"
+    destFile = "run.sh"
   }
   agent any
   stages {
