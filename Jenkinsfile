@@ -40,9 +40,8 @@ pipeline {
       steps{
         sh printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"
         sh ./run.sh
-
+        
       }
     }
   }
 }
-// $BUILD_NUMBER
