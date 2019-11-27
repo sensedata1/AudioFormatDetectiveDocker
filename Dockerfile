@@ -17,4 +17,5 @@ RUN chmod a+x docker-build-script.sh \
 && chmod a+x /app/dist/AudioFormatDetectiveCON
 
 WORKDIR /app/dist
-ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
+CMD [./AudioFormatDetectiveCON]
+#ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
