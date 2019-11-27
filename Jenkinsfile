@@ -3,7 +3,7 @@ pipeline {
     registry = "sensedata1/audioformatdetective"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    runCommand="docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective"
+    runCommand= "docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective"
     destFile=run.sh
   }
   agent any
@@ -38,9 +38,10 @@ pipeline {
     }
     stage('Increment build number in run.sh') {
       steps{
-        sh printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"
-        sh ./run.sh
-        
+        script{
+            printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"
+            ./run.sh
+        }
       }
     }
   }
