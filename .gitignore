@@ -6,3 +6,7 @@ build/
 .idea/
 __pycache__
 dist/
+Dockerfile_OLD
+deprecated_scripts
+testscript
+launch-jenkins-image
