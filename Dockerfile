@@ -1,4 +1,6 @@
-FROM python:3.8-slim
+#FROM python:3.8 AS build
+FROM python:3.8
+
 COPY . /app
 WORKDIR /app
 RUN apt-get update && apt-get install -y \
@@ -8,8 +10,8 @@ python-pyaudio \
 python3-pyaudio \
 make \
 python-setuptools \
-ffmpeg
-#&& rm -rf /var/lib/apt/lists/*
+ffmpeg \
+&& rm -rf /var/lib/apt/lists/*
 
 RUN chmod a+x docker-build-script.sh \
 && ./docker-build-script.sh \
@@ -17,5 +19,13 @@ RUN chmod a+x docker-build-script.sh \
 && chmod a+x /app/dist/AudioFormatDetectiveCON
 
 WORKDIR /app/dist
-#CMD [./AudioFormatDetectiveCON]
+
+#FROM alpine AS production
+#COPY --from=build /app/dist/AudioFormatDetectiveCON .
+#
+#RUN apk update && apk add \
+#ffmpeg \
+#&& mkdir /AJTEMP \
+#&& chmod a+x AudioFormatDetectiveCON
+
 ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
