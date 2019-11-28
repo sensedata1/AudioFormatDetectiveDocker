@@ -1,5 +1,5 @@
-#FROM python:3.8 AS build
-FROM python:3.8
+FROM python:3.8 AS build
+#FROM python:3.8
 
 COPY . /app
 WORKDIR /app
@@ -20,6 +20,24 @@ RUN chmod a+x docker-build-script.sh \
 
 WORKDIR /app/dist
 
+FROM python:3.8-slim AS production
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+apt-utils \
+ffmpeg \
+&& mkdir /AJTEMP \
+&& rm -rf /var/lib/apt/lists/*
+
+COPY --from=build /app/dist/AudioFormatDetectiveCON .
+
+#WORKDIR /app/dist
+
+RUN chmod a+x AudioFormatDetectiveCON
+RUN apt-get update
+RUN apt-get install -y libmagic1
+RUN chmod a+x AudioFormatDetectiveCON
+
+CMD ["/app/AudioFormatDetectiveCON"]
 #FROM alpine AS production
 #COPY --from=build /app/dist/AudioFormatDetectiveCON .
 #
@@ -28,4 +46,4 @@ WORKDIR /app/dist
 #&& mkdir /AJTEMP \
 #&& chmod a+x AudioFormatDetectiveCON
 
-ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
+#ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]

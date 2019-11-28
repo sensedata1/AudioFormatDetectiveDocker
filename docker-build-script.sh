@@ -14,8 +14,6 @@ pip install pydub
 pip install eyed3
 pip install https://github.com/pyinstaller/pyinstaller/archive/develop.tar.gz
 
-echo "Cleaning up installation artefacts.."
-
 pyinstaller \
  --onefile \
  --noconfirm \
