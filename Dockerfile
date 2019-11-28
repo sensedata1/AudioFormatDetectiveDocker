@@ -25,7 +25,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 apt-utils \
 ffmpeg \
 && mkdir /AJTEMP \
+&& mkdir /app \
 && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 
 COPY --from=build /app/dist/AudioFormatDetectiveCON .
 
@@ -34,5 +36,5 @@ RUN apt-get update
 RUN apt-get install -y libmagic1
 RUN chmod a+x AudioFormatDetectiveCON
 
-CMD ["AudioFormatDetectiveCON"]
+CMD ["/app/AudioFormatDetectiveCON"]
 
