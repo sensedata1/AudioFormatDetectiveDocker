@@ -1,5 +1,4 @@
 FROM python:3.8 AS build
-#FROM python:3.8
 
 COPY . /app
 WORKDIR /app
@@ -30,20 +29,10 @@ ffmpeg \
 
 COPY --from=build /app/dist/AudioFormatDetectiveCON .
 
-#WORKDIR /app/dist
-
 RUN chmod a+x AudioFormatDetectiveCON
 RUN apt-get update
 RUN apt-get install -y libmagic1
 RUN chmod a+x AudioFormatDetectiveCON
 
 CMD ["AudioFormatDetectiveCON"]
-#FROM alpine AS production
-#COPY --from=build /app/dist/AudioFormatDetectiveCON .
-#
-#RUN apk update && apk add \
-#ffmpeg \
-#&& mkdir /AJTEMP \
-#&& chmod a+x AudioFormatDetectiveCON
 
-#ENTRYPOINT ["/app/dist/AudioFormatDetectiveCON"]
