@@ -26,7 +26,8 @@ apt-utils \
 ffmpeg \
 && mkdir /AJTEMP \
 && mkdir /app \
-&& rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/lists/* \
+&& rm -rf /tmp/*
 WORKDIR /app
 
 COPY --from=build /app/dist/AudioFormatDetectiveCON .
