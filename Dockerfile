@@ -35,6 +35,9 @@ COPY --from=build /app/dist/AudioFormatDetectiveCON .
 RUN chmod a+x AudioFormatDetectiveCON
 RUN apt-get update
 RUN apt-get install -y libmagic1
+RUN apt-get clean autoclean
+RUN apt-get autoremove -y
+RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 RUN chmod a+x AudioFormatDetectiveCON
 
 CMD ["/app/AudioFormatDetectiveCON"]
