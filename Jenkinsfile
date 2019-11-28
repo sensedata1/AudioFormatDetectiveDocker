@@ -3,6 +3,7 @@ pipeline {
     registry = "sensedata1/audioformatdetective"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    dockerImageRef = ''
     runCommand = "docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective"
     destFile = "run.sh"
   }
@@ -16,7 +17,8 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER" + " --squash"
+          dockerImageRef = registry + ":$BUILD_NUMBER"
 
         }
       }
@@ -25,7 +27,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+            dockerImageRef.push()
           }
         }
       }
