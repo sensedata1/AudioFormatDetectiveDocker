@@ -37,7 +37,7 @@ RUN apt-get update
 RUN apt-get install -y libmagic1
 RUN chmod a+x AudioFormatDetectiveCON
 
-CMD ["/app/AudioFormatDetectiveCON"]
+CMD ["AudioFormatDetectiveCON"]
 #FROM alpine AS production
 #COPY --from=build /app/dist/AudioFormatDetectiveCON .
 #
