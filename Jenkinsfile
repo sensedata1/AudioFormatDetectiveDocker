@@ -30,12 +30,12 @@ pipeline {
         }
       }
     }
-//     stage('Remove Unused docker image') {
-//       steps{
-//         sh "docker rmi $registry:$BUILD_NUMBER"
-//
-//       }
-//     }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+
+      }
+    }
     stage('Increment build number in run.sh') {
       steps{
          sh 'printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"'
