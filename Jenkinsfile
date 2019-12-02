@@ -5,6 +5,7 @@ pipeline {
     dockerImage = ''
     runCommand = "docker run -v ~/AJTEMP:/AJTEMP -it sensedata1/audioformatdetective"
     destFile = "run.sh"
+    imageToPush = ''
   }
   agent any
   stages {
@@ -17,6 +18,7 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER --squash"
+          imageToPush = registry + ":$BUILD_NUMBER"
 
         }
       }
@@ -25,8 +27,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
-//             dockerImage.push()
-                docker.push(registry + ":$BUILD_NUMBER")
+                imageToPush.push()
           }
         }
       }
