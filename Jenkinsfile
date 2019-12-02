@@ -18,7 +18,7 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER --squash"
-          imageToPush = registry + ":$BUILD_NUMBER"
+//           imageToPush = registry + ":$BUILD_NUMBER"
 
         }
       }
