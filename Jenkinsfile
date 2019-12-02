@@ -17,8 +17,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER --squash"
-//           imageToPush = registry + ":$BUILD_NUMBER"
+          dockerImage = "docker.build --squash" + registry + ":$BUILD_NUMBER"
 
         }
       }
