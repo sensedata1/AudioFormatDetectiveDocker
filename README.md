@@ -6,16 +6,10 @@ Uses audiotools and eyed3 to evaluate the attributes of audio files uploaded to 
 
 ---
 
-To run you must have Docker installed, then:
+To run, install Docker (eg Docker desktop for macOS), then:
 
-` docker run --name afd -v <DOWNLOADS_FOLDER_PATH>:/AJTEMP sensedata1/audioformatdetective:63 `
+` docker run --rm --name afd -v <DOWNLOADS_FOLDER_PATH>:/AJTEMP sensedata1/audioformatdetective:prod `
 
-To stop:
 
-`docker stop afd `
-
-To restart:
-
-`docker start afd`
 
 
