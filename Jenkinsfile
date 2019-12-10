@@ -3,7 +3,7 @@ pipeline {
     registry = "sensedata1/audioformatdetective"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    runCommand = "docker run -v ""/Volumes/ProjectsDrive/General Downloads/AJ TEMP DOWNLOADS":/AJTEMP -it sensedata1/audioformatdetective"
+    runCommand = "docker run -v "/Volumes/ProjectsDrive/General Downloads/AJ TEMP DOWNLOADS":/AJTEMP -it sensedata1/audioformatdetective"
     destFile = "run.sh"
     imageToPush = ''
   }
