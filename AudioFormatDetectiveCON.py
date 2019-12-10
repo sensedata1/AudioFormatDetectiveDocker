@@ -73,6 +73,15 @@ def unzip():
                     print("Unzip failed, zipfile may be corrupt")
 
 
+def roundSeconds(dateTimeObject):
+    newDateTime = dateTimeObject
+
+    if newDateTime.microsecond >= 500000:
+        newDateTime = newDateTime + datetime.timedelta(seconds=1)
+
+    return newDateTime.replace(microsecond=0)
+
+
 def process_audio_files(currentFile):
     # currentFile = fileList
     eyed3.log.setLevel("ERROR")
@@ -98,7 +107,8 @@ def process_audio_files(currentFile):
             channels = ""
         try:
             durationSecs = mp3File.info.time_secs
-            duration = str(datetime.timedelta(seconds=durationSecs))
+            duration2 = str(datetime.timedelta(seconds=durationSecs))
+            duration = duration2.split(".")[0]
         except:
             duration = "***"
         try:
@@ -275,6 +285,8 @@ if __name__ == "__main__":
     eyed3.log.setLevel("ERROR")
 
     AJDownloadsFolder = os.path.abspath("/AJTEMP")
+    # AJDownloadsFolder = os.path.abspath("/Volumes/ProjectsDrive/General Downloads/AJ TEMP DOWNLOADS")
+
     os.chdir(AJDownloadsFolder)
     print("Downloads folder = " + AJDownloadsFolder)
     print("")
@@ -292,5 +304,5 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("Interrupt received, stopping...")
-    finally:
-        exit()
+    # finally:
+    #     exit()
