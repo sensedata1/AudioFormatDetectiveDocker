@@ -17,7 +17,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-             dockerImage = docker.build("$registry:$BUILD_NUMBER" ,  " --squash -f Dockerfile . ")
+             dockerImage = docker.build("$registry:prod" ,  " --squash -f Dockerfile . ")
 //           dockerImage = docker.build + registry + ":$BUILD_NUMBER"
 
         }
@@ -34,13 +34,13 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh "docker rmi $registry:prod"
 
       }
     }
     stage('Increment build number in run.sh') {
       steps{
-         sh 'printf "%s" "$runCommand:$BUILD_NUMBER" > "$destFile"'
+         sh 'printf "%s" "$runCommand:prod" > "$destFile"'
 
       }
     }
