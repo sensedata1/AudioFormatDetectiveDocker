@@ -38,7 +38,7 @@ def unzip():
     for directory, subdirectories, files in os.walk(cwd):
         for file in files:
             # print(file) Debugging output
-            if file.endswith((".zip", ".ZIP")) and os.path.isfile(os.path.join(directory, file)):
+            if file.lower().endswith(".zip") and os.path.isfile(os.path.join(directory, file)):
                 currentZipFile = os.path.join(directory, file)
                 zipFolderName = os.path.splitext(currentZipFile)[0]
 
@@ -87,7 +87,7 @@ def process_audio_files(currentFile):
     eyed3.log.setLevel("ERROR")
     curPath, file = os.path.split(currentFile)
 
-    if currentFile.endswith((".mp3", ".MP3", ".Mp3")) and not currentFile.startswith(".") \
+    if currentFile.lower().endswith(".mp3") and not currentFile.startswith(".") \
             and os.path.isfile(currentFile):
         try:
             mp3File = eyed3.load(currentFile)
@@ -151,7 +151,7 @@ def process_audio_files(currentFile):
         except:
             rate = "err"
         vbrTrueFalse = "  "
-        if sampleRate == 44100 and channels == 2 and rate < 325 and rate > 315:  # and wm != "wmd":
+        if sampleRate == 44100 and channels == 2 and 325 > rate > 315:  # and wm != "wmd":
             errorMp3 = green(" [ok]")
         else:
             errorMp3 = red("[ERR]")
@@ -160,7 +160,7 @@ def process_audio_files(currentFile):
         ######################################################################################
         print(errorMp3, sampleRate, bits, channels, ch, vbrTrueFalse, rate, duration[3:], file, red(recognisedSpeech))
     # Look for wav files and evaluate
-    if currentFile.endswith((".wav", ".WAV", ".WaV", ".wAV", ".WAv", ".Wav")) and not currentFile.startswith(".") \
+    if currentFile.lower().endswith(".wav") and not currentFile.startswith(".") \
             and os.path.isfile(currentFile):
         # currentFile = os.path.join(directory, file)
         try:
@@ -230,7 +230,7 @@ def process_audio_files(currentFile):
         ######################################################################################
         print(errorWav, sampleRate, bits, channels, ch, gap, duration[3:], file, red(recognisedSpeech))
     # If any other audio file types are present mark as [ERR]
-    if file.endswith((".aac", ".aiff", ".aif", ".flac", ".m4a", ".m4p")) \
+    if file.lower().endswith((".aac", ".aiff", ".aif", ".flac", ".m4a", ".m4p")) \
             and os.path.isfile(currentFile):
         # currentFile = os.path.join(directory, file)
         try:
@@ -265,11 +265,10 @@ def os_walk():
         for directory, subdirectories, files in os.walk(cwd):
             for file in files:
                 tempCurrentFile = os.path.join(directory, file)
-                if tempCurrentFile.endswith \
-                            ((".mp3", ".MP3", ".Mp3", ".aac",
+                if tempCurrentFile.lower().endswith \
+                            ((".mp3", ".aac",
                               ".aiff", ".aif", ".flac", ".m4a",
-                              ".m4p", ".wav", ".WAV", ".WaV",
-                              ".wAV", ".WAv", ".Wav")) and not tempCurrentFile.startswith(".") \
+                              ".m4p", ".wav",)) and not tempCurrentFile.startswith(".") \
                         and os.path.isfile(tempCurrentFile):
                     currentFileList.append(tempCurrentFile)
 
@@ -284,6 +283,7 @@ if __name__ == "__main__":
     # Suppress warnings from eyeD3
     eyed3.log.setLevel("ERROR")
 
+    # switch these two lines for local testing
     AJDownloadsFolder = os.path.abspath("/AJTEMP")
     # AJDownloadsFolder = os.path.abspath("/Volumes/ProjectsDrive/General Downloads/AJ TEMP DOWNLOADS")
 
