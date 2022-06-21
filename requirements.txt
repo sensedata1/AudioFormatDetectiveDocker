@@ -1,6 +1,6 @@
 
 ez-setup==0.9
-numpy==1.16.0
+numpy==1.22.0
 pydub==0.23.1
 PyInstaller==3.4
 SpeechRecognition==3.8.1
